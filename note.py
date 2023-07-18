@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class Note():
     def __init__(self, id, header, body, dateTime):
         self._id = id
@@ -23,6 +25,16 @@ class Note():
     
     @property
     def printNote(self):
-        return "ID: " + str(self.id) + "\n" + "Заголовок: " + str(self.header) + "\n" + "Содержание: " + str(self.body) + "\n" + "Дата/время: " + str(self.dateTime) + "\n"
+        return "ID: " + str(self.id) + "\n" + "Заголовок: " + str(self.header) + "\n" + "Содержание: " + str(self.body) + "\n" + "Последнее изменение: " + str(self.dateTime) + "\n"
 
-    
+    @header.setter
+    def header(self, newHeader):
+        self._header = newHeader
+
+    @body.setter
+    def body(self, newBody):
+        self._body = newBody
+
+    @dateTime.setter
+    def dateTime(self):
+        self._dateTime = datetime.now()
