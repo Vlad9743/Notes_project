@@ -16,16 +16,16 @@ notebookOne.addNote(note1)
 notebookOne.addNote(note2)
 notebookOne.addNote(note3)
 
-#menu.menu(notebookOne)
+menu.menu(notebookOne)
 
-print(notebookOne.printNotebook)
+#print(notebookOne.printNotebook)
 
 #notebookOne.sortByDateTime
 #print(notebookOne.printNotebook)
 
 #notebookOne.writeNotebook
-notebookOne.readNotebook
-print(notebookOne.printNotebook)
+#notebookOne.readNotebook
+#print(notebookOne.printNotebook)
 
 #notebookOne.removeNote(2)
 #print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")

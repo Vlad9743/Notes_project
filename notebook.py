@@ -9,6 +9,8 @@ class Notebook():
 
     def addNote(self, newNote):
         self._list.append(newNote)
+        print("Заметка добавлена.\n")
+
 
     @property
     def buildNote(self):
@@ -25,9 +27,9 @@ class Notebook():
 
         return newNote
     
-
-    def removeNote(self, idToDelete):
-        #idToDelete = input("Введите id заметки для удаления: ")
+    @property
+    def removeNote(self):
+        idToDelete = int(input("Введите id заметки для удаления: "))
         i = 0
         foundFlag = False
         while i < len(self._list) and foundFlag == False:
@@ -36,12 +38,13 @@ class Notebook():
                 foundFlag = True
             i += 1
         if foundFlag == True:
-            print("Заметка удалена.")
+            print("Заметка удалена.\n")
         else:
-            print("Заметка не найдена.")
-        
-    def editNote(self, idToEdit):
-        #idToEdit = input("Введите id заметки для редактирования: ")
+            print("Заметка не найдена.\n")
+
+    @property    
+    def editNote(self):
+        idToEdit = int(input("Введите id заметки для редактирования: "))
         i = 0
         foundFlag = False
         while i < len(self._list) and foundFlag == False:
@@ -54,9 +57,9 @@ class Notebook():
                 
             i += 1
         if foundFlag == True:
-            print("Заметка изменена.")
+            print("Заметка изменена.\n")
         else:
-            print("Заметка не найдена.")
+            print("Заметка не найдена.\n")
 
     @property
     def readNotebook(self):
@@ -86,12 +89,13 @@ class Notebook():
 
     @property
     def sortByDateTime(self):
-        for j in range(len(self._list) - 1):
-            for i in range(j, len(self._list)-1):
-                if self._list[i+1].dateTime > self._list[i].dateTime:
-                    temp = self._list[i-1]
-                    self._list[i-1] = self._list[i]
-                    self._list[i] = temp
+        swapped = True
+        while swapped:
+            swapped =False
+            for i in range(len(self._list) - 1):
+                if self._list[i].dateTime < self._list[i+1].dateTime:
+                    self._list[i], self._list[i+1] = self._list[i+1], self._list[i]
+                    swapped = True
 
     @property
     def printNotebook(self):

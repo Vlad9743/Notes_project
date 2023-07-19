@@ -1,4 +1,5 @@
-#import notebook
+import notebook
+import note
 
 def menu(notebookObj):
     menuFlag = True
@@ -15,9 +16,12 @@ def menu(notebookObj):
         user_operation = int(input())
 
         if user_operation == 1:
-            notebookObj.printNotebook
+            notebookObj.sortByDateTime
+            print(notebookObj.printNotebook)
         elif user_operation == 2:
-            notebookObj.addNote
+            newNote = notebookObj.buildNote
+            notebookObj.addNote(newNote)
+            notebookObj.sortByDateTime
         elif user_operation == 3:
             notebookObj.editNote
         elif user_operation == 4:
