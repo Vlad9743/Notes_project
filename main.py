@@ -20,7 +20,11 @@ notebookOne.addNote(note3)
 
 print(notebookOne.printNotebook)
 
-notebookOne.sortByDateTime
+#notebookOne.sortByDateTime
+#print(notebookOne.printNotebook)
+
+#notebookOne.writeNotebook
+notebookOne.readNotebook
 print(notebookOne.printNotebook)
 
 #notebookOne.removeNote(2)

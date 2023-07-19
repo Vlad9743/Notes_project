@@ -1,5 +1,6 @@
 import note
 from datetime import datetime
+import json
 
 class Notebook():
     def __init__(self):
@@ -39,7 +40,6 @@ class Notebook():
         else:
             print("Заметка не найдена.")
         
-
     def editNote(self, idToEdit):
         #idToEdit = input("Введите id заметки для редактирования: ")
         i = 0
@@ -58,11 +58,31 @@ class Notebook():
         else:
             print("Заметка не найдена.")
 
-    def readNotebook(filename):
-        pass
+    @property
+    def readNotebook(self):
+        filename = input("Введите имя файла для чтения: ")
+        file = open(filename + ".txt", "r", encoding="utf-8")
+        for line in file:
+            noteDic = json.loads(line)
+            self.addNote(note.Note(noteDic["id"], noteDic["header"], noteDic["body"], noteDic["dateTime"]))
+        file.close()
 
-    def writeNotebook(self, filename):
-        pass
+    @property
+    def writeNotebook(self):
+        filename = input("Введите имя файла для сохранения: ")
+        file = open(filename + ".txt", "w", encoding="utf-8")
+        for i in range(len(self._list)):
+            stringJSON = "{"
+            stringJSON += ('"id" : "' + str(self._list[i].id) + '", ')
+            stringJSON += ('"header" : "' + str(self._list[i].header) + '", ')
+            stringJSON += ('"body" : "' + str(self._list[i].body) + '", ')
+            stringJSON += ('"dateTime" : "' + str(self._list[i].dateTime) + '"}')
+
+            file.write(stringJSON)
+            file.write("\n")
+
+        file.close()
+
 
     @property
     def sortByDateTime(self):
@@ -72,8 +92,6 @@ class Notebook():
                     temp = self._list[i-1]
                     self._list[i-1] = self._list[i]
                     self._list[i] = temp
-
-
 
     @property
     def printNotebook(self):
