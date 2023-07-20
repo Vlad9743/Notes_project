@@ -7,11 +7,9 @@ class Notebook():
     def __init__(self):
         self._list = []
 
-
     def addNote(self, newNote):
         self._list.append(newNote)
-        print("Заметка добавлена.\n")
-
+        print("\nЗаметка добавлена.\n")
 
     @property
     def buildNote(self):
@@ -75,6 +73,7 @@ class Notebook():
         filename = str(input("Введите имя файла для чтения: "))
         try:
             file = open(filename + ".txt", "r", encoding="utf-8")
+            self._list.clear()
             for line in file:
                 noteDic = json.loads(line)
                 self.addNote(note.Note(int(noteDic["id"]), noteDic["header"], noteDic["body"], datetime.strptime(noteDic["dateTime"], '%Y-%m-%d %H:%M:%S.%f')))

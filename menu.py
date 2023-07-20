@@ -6,15 +6,15 @@ def menu(notebookObj):
     while menuFlag:
         print("\n-----Записная книжка-----")
         print("--------- Меню ----------")
-        print("1 - показать записи")
-        print("2 - добавить запись")
-        print("3 - изменить запись")
-        print("4 - удалить запись")
-        print("5 - сохранить в файл")
-        print("6 - считать из файла")
-        print("0 - завершить работу")
+        print("- 1 - показать записи")
+        print("- 2 - добавить запись")
+        print("- 3 - изменить запись")
+        print("- 4 - удалить запись")
+        print("- 5 - сохранить в файл")
+        print("- 6 - считать из файла")
+        print("- 0 - завершить работу")
 
-        user_operation = input("Укажите пункт меню: ")
+        user_operation = input("\nУкажите пункт меню: ")
         if user_operation.isdigit():
             user_operation = int(user_operation)
             if user_operation == 1:
