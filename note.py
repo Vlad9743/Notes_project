@@ -36,5 +36,5 @@ class Note():
         self._body = newBody
 
     @dateTime.setter
-    def dateTime(self):
-        self._dateTime = datetime.now()
+    def dateTime(self, newDateTime):
+        self._dateTime = newDateTime
